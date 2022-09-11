@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brad's Weather App</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+<body>
+     <header>
+        <h1>Brad's Weather Dashboad</h1>
+    </header>
+
+    <div class="top">
+
+        <aside class="search">
+            <input type="text" autocomplete="off" id="searchInput" placeholder="Enter City">
+            <button id="searchBtn">Search</button>
+            <div id="searchHist">
+                <button class="histBtn">Historical Search</button>
+               
+            </div>
+        </aside> 
+        
+        <aside class="currentConditions">
+           
+            <h2 id="currentCity">Current City</h2>
+            <p id="currentImage"><img src="" alt="Current weather conditions image"></p>
+            <p id="currentTemp">Temperature: 86</p>
+            <p id="currentWind">Windspeed: 16</p>
+            <p id="currentHumidity">Humidity: 72</p>
+            <p id="currentUvIndex">UV Index: 46</p>
+
+        </aside>
+    </div>
+    
+    <h3 class="fiveDayHead">5-Day Forecast</h3>
+    <div class="fiveDay">
+       
+        
+        <div class="days">
+            <p class="forecastDate">09/10/2022</p>
+            <p class="forecastPicContainer"><img src="" alt="Forecast weather conditions image" class="forecastImage" id="imageDay1"></p>
+            <p class="forecastTemp" id="tempDay1">Temp: 86</p>
+            <p class="forecastWind" id="windDay1">Windspeed: 12</p>
+            <p class="forecastHumidity" id="humidityDay1">Humidity: 68</p>
+        </div>
+        <div class="days">
+            <p class="forecastDate"></p>
+            <p class="forecastPicContainer"><img src="" alt="Forecast weather conditions image" class="forecastImage" id="imageDay2"></p>
+            <p class="forecastTemp" id="tempDay2"></p>
+            <p class="forecastWind" id="windDay2"></p>
+            <p class="forecastHumidity" id="humidityDay2"></p>
+        </div>
+        <div class="days">
+            <p class="forecastDate"></p>
+            <p class="forecastPicContainer"><img src="" alt="Forecast weather conditions image" class="forecastImage" id="imageDay3"></p>
+            <p class="forecastTemp" id="tempDay3"></p>
+            <p class="forecastWind" id="windDay3"></p>
+            <p class="forecastHumidity" id="humidityDay3"></p>
+        </div>
+        <div class="days">
+            <p class="forecastDate"></p>
+            <p class="forecastPicContainer"><img src="" alt="Forecast weather conditions image" class="forecastImage" id="imageDay4"></p>
+            <p class="forecastTemp" id="tempDay4"></p>
+            <p class="forecastWind" id="windDay4"></p>
+            <p class="forecastHumidity" id="humidityDay4"></p>
+        </div>
+        <div class="days">
+            <p class="forecastDate"></p>
+            <p class="forecastPicContainer"><img src="" alt="Forecast weather conditions image" class="forecastImage" id="imageDay5"></p>
+            <p class="forecastTemp" id="tempDay5"></p>
+            <p class="forecastWind" id="windDay5"></p>
+            <p class="forecastHumidity" id="humidityDay5"></p>
+        </div>
+    </div> 
+
+
+    
+    <script src="./assets/script/script.js"></script>
+</body>
+</html>
