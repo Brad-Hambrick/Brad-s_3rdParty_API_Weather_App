@@ -41,22 +41,28 @@ aside {
 }
 
 input {
+    border-radius: 5px;
     line-height: 30px;
     font-size: large;
 }
 
 #searchBtn {
+    border-radius: 5px;
     height: 30px;
     width: 85px;
     font-size: large;
 }
 
-#histBtn {
+.history-btn {
+    display: flex;
     height: 30px;
-    width: auto;
+    width: 200px;
+    text-align: center;
     font-size: large;
     margin: 10px;
+    padding-left: 60px;
     border: 3px solid black;
+    border-radius: 5px;
 }
 
 .fiveDay {
@@ -68,14 +74,28 @@ input {
     align-items: center;
     align-content: center;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 40px;
 }
 
 .days {
     border: 5px solid black;
-    margin-top: 40px;
-    margin-right: 30px;
-    margin-left: 30px;
+    margin-top: 10px;
+    margin-right: 5%;
+    margin-left: 5%;
     border-radius: 10px;
 
+}
+
+@media screen and (max-width: 1600px) {
+    .search, .currentConditions, .fiveDayHead, .fiveDay {
+        display: flex;
+        flex-direction: column;
+    }
+    .currentConditions {
+        margin-left: 20%;
+    }
+    .fiveDay {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
 }
