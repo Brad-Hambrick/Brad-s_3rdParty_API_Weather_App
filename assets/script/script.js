@@ -1,8 +1,9 @@
 // API Weather Forecaster Javascript
-
+// Declare Global Variables
 var searchHistory = [];
 var searchHistoryContainer = document.querySelector("#history");
 
+// Function to fetch the current weather data
 function fetchWeather () {
     let location = document.getElementById('searchInput').value;
     let currentImage = document.getElementById('currentImage');
@@ -13,25 +14,30 @@ function fetchWeather () {
     let weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + location + ',US&units=imperial&appid=88d613e9a00e76b75b238a72808a570d'
     fetch(weatherUrl)          
     .then((response) => response.json())
-    .then((data) => {
+    .then(function (data) {
         console.log(data)
+// Adding the data into the HTML Document
         document.getElementById('currentCity').innerHTML = location;
-        for (i=0; i<1; i++) {
         var image = "https://openweathermap.org/img/wn/" + (data.weather[0].icon + ".png")
-        var weatherIcon = document.createElement("img");
-        imageContainer = document.querySelector("#currentImage")
-        weatherIcon.setAttribute('src', image);
-        weatherIcon.setAttribute('alt', iconDescription);
-        imageContainer.append(weatherIcon);
-        if (weatherIcon.length == i) {
-            weatherIcon.length -1;
+        let weatherIcon = document.createElement("img");
+        imageContainer = document.querySelector("#currentImage");
+        let imgIcon = document.querySelector("div#currentImage img");
+        console.log(imgIcon)
+        if (imgIcon) {
+            weatherIcon.setAttribute('src', image);
+            weatherIcon.setAttribute('alt', iconDescription);
+        } else {
+            weatherIcon.setAttribute('src', image);
+            weatherIcon.setAttribute('alt', iconDescription);
+            console.log(imageContainer)
+            imageContainer.append(weatherIcon);
         }
-        }
+        
         document.getElementById('currentTemp').innerHTML = "Current Temp: " + Number(data.main.temp) + "°"
         document.getElementById('currentWind').innerHTML = "Wind Speed: " + Number(data.wind.speed) + " MPH"
         document.getElementById('currentHumidity').innerHTML = "Humidity: " + Number(data.main.humidity) + " %"
         document.getElementById('currentUvIndex').innerHTML = "UV Index: " + Number(data.clouds.all)
-
+// Adding the search history to the local storage and pulling to create the history buttons
         searchHistory.push(location)
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
         searchHistoryContainer.innerHTML = ""
@@ -53,6 +59,8 @@ function fetchWeather () {
     })
 }
 
+
+// Function to fetch the 5 day forecast data
 function fetchForecast () {
     let location = document.getElementById('searchInput').value;
     let iconDescription = "Forecast weather conditions"
@@ -61,17 +69,25 @@ function fetchForecast () {
     fetch(weatherUrl)
     .then((response) => response.json())
     .then((data) => {
+// Appending the data to the HTML and for loop to loop through 5 days of data.
+
         console.log(data)
         for(i=0;i<5;i++){
             document.getElementById("forecastDate"+(i+1)).innerHTML = (data.list[i*8].dt_txt) 
         }
         for(i=0;i<5;i++){
             var image = "https://openweathermap.org/img/wn/" + (data.list[i*8].weather[0].icon) + ".png"
-            var weatherIcon = document.createElement("img");
-            imageContainer = document.querySelector("#imageDay" + (i+1))
-            weatherIcon.setAttribute('src', image);
-            weatherIcon.setAttribute('alt', iconDescription);
-            imageContainer.append(weatherIcon);
+            let weatherForecastIcon = document.createElement("img");
+            let imgIcon = document.querySelector(`div#imageDay${i+1} img`);
+            imageContainer = document.querySelector("#imageDay" + (i+1));
+            if (imgIcon) {
+                weatherForecastIcon.setAttribute('src', image);
+                weatherForecastIcon.setAttribute('alt', iconDescription);
+            } else {
+                weatherForecastIcon.setAttribute('src', image);
+                weatherForecastIcon.setAttribute('alt', iconDescription);
+                imageContainer.append(weatherForecastIcon);
+            }
         }
         
         for(i=0;i<5;i++){
@@ -87,9 +103,12 @@ function fetchForecast () {
     })
 }
 
-
+// Event Listener and calling of the functions when the search is initiated
 let searchBtn = document.getElementById("searchBtn");
 searchBtn.onclick = function(){
     fetchWeather()
     fetchForecast()
 };
+
+
+
